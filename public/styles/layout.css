@@ -15,9 +15,11 @@ html {
  */
 
 body {
+  font-family: roboto, sans-serif;
   margin: 0;
   color: #244751;
   background-color: #eee;
+  font-size: 1em;
 }
 
 /*
