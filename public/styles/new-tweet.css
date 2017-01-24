@@ -8,13 +8,9 @@
 }
 
 h2{
+  color:#244751;
   margin-top: 0;
   border-bottom: 1px solid black;
-}
-
-hr{
-  height:1px;
-  color:black;
 }
 
 .new-tweet textarea{
@@ -24,6 +20,8 @@ hr{
 }
 
 span.counter{
+  color:#244751;
   position: absolute;
   right:1em;
+  bottom:0.5em;
 }
