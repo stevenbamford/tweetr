@@ -65,8 +65,33 @@ $(document).ready(function (){
   renderTweets(data);
 });
 
+function calcWhenTweeted(tweetObj){
+  let dateCreated = Date.now() - tweetObj["created_at"];
+  let createdAgo = Math.round(dateCreated / 8.64e4);
 
-function appendToHeader (tweetObj){
+  if(createdAgo > 31557600){
+    createdAgo = createdAgo/ 31557600;
+    return createdAgo + " years ago";
+  }
+  if(createdAgo > 86400){
+    createdAgo = Math.floor(createdAgo/ 86400);
+    return createdAgo + " days ago";
+  }
+  if(createdAgo > 3600){
+    createdAgo = Math.floor(createdAgo/ 3600);
+    return createdAgo + " hours ago";
+  }
+  if(createdAgo > 60){
+    createdAgo = Math.floor(createdAgo/ 60);
+    return createdAgo + " minutes ago";
+  }else{
+    createdAgo = Math.floor(createdAgo);
+    return createdAgo + " seconds ago";
+  }
+}
+
+
+function appendToHeader(tweetObj){
   const $tweetHeader = $("<header>");
   const imgSrc = tweetObj.user.avatars.small;
   const $avatar = $("<img>").attr("src", imgSrc);
@@ -78,10 +103,9 @@ function appendToHeader (tweetObj){
   return $tweetHeader;
 }
 
-function appendToFooter (tweetObj){
-  const dateCreated = Date.now() - tweetObj["created_at"];
-  const daysCreatedAgo = Math.round(dateCreated / 8.64e7);
-  const $tweetFooter = $("<footer>" + daysCreatedAgo + " days ago</footer>");
+function appendToFooter(tweetObj){
+  const timeWhenTweeted = calcWhenTweeted(tweetObj);
+  const $tweetFooter = $("<footer>" + timeWhenTweeted + "</footer>");
   const $tweetFooterIcons = $("<div>");
   const $flagIcon = $("<i>").addClass("fa fa-flag").attr("aria-hidden", "true");
   const $retweetIcon = $("<i>").addClass("fa fa-retweet").attr("aria-hidden", "true");
