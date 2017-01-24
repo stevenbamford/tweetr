@@ -95,8 +95,8 @@ function appendToHeader(tweetObj){
   const $tweetHeader = $("<header>");
   const imgSrc = tweetObj.user.avatars.small;
   const $avatar = $("<img>").attr("src", imgSrc);
-  const $userName = $("<h2>" + tweetObj.user.name + "</h2>");
-  const $handle = $("<h3>" + tweetObj.user.handle + "</h3>");
+  const $userName = $("<h2>").text(tweetObj.user.name);
+  const $handle = $("<h3>").text(tweetObj.user.handle);
 
   $tweetHeader.append($avatar, $userName, $handle);
 
@@ -120,7 +120,7 @@ function appendToFooter(tweetObj){
  function createTweetElement(tweetObj){
   const $tweet = $("<article>").addClass("tweet");
   const header = appendToHeader(tweetObj);
-  const tweetContent = $("<p>" + tweetObj.content.text + "</p>");
+  const tweetContent = $("<p>").text(tweetObj.content.text);
   const footer = appendToFooter(tweetObj);
 
   $tweet.append(header, tweetContent, footer);
