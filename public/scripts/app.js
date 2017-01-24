@@ -51,64 +51,70 @@
   }
 ];
 
-
-
 $(document).ready(function (){
 
   $("article.tweet").on("mouseenter", function(){
-
     $(this).find("footer div").css("display", "inline");
     $(this).find("header").css("opacity", "1");
-  }).on("mouseleave", function(){
 
+  }).on("mouseleave", function(){
      $(this).find("footer div").css("display", "none");
      $(this).find("header").css("opacity", "0.5");
-
   });
+
   renderTweets(data);
 });
 
 
- function createTweetElement (tweetObj){
+function appendToHeader (tweetObj){
+  const $tweetHeader = $("<header>");
+  const imgSrc = tweetObj.user.avatars.small;
+  const $avatar = $("<img>").attr("src", imgSrc);
+  const $userName = $("<h2>" + tweetObj.user.name + "</h2>");
+  const $handle = $("<h3>" + tweetObj.user.handle + "</h3>");
 
-  let dateCreated = Date.now() - tweetObj["created_at"];
-  let daysCreatedAgo = Math.round(dateCreated / 8.64e7);
-  let imgSrc = tweetObj.user.avatars.small;
+  $tweetHeader.append($avatar, $userName, $handle);
 
-  let $tweet = $("<article>").addClass("tweet");
-  let $tweetHeader = $("<header>");
-  let $tweetContent = $("<p>" + tweetObj.content.text + "</p>");
-  let $tweetFooter = $("<footer>" + daysCreatedAgo + " days ago</footer>");
-  let $tweetFooterIcons = $("<div>");
-  let $icon = $("<img>").attr("src", imgSrc);
-  let $userName = $("<h2>" + tweetObj.user.name + "</h2>");
-  let $handle = $("<h3>" + tweetObj.user.handle + "</h3>");
-  let $flagIcon = $("<i>").addClass("fa fa-flag").attr("aria-hidden", "true");
-  let $retweetIcon = $("<i>").addClass("fa fa-retweet").attr("aria-hidden", "true");
-  let $heartIcon = $("<i>").addClass("fa fa-heart").attr("aria-hidden", "true");
+  return $tweetHeader;
+}
 
-  $tweetHeader.append($icon, $userName, $handle);
+function appendToFooter (tweetObj){
+  const dateCreated = Date.now() - tweetObj["created_at"];
+  const daysCreatedAgo = Math.round(dateCreated / 8.64e7);
+  const $tweetFooter = $("<footer>" + daysCreatedAgo + " days ago</footer>");
+  const $tweetFooterIcons = $("<div>");
+  const $flagIcon = $("<i>").addClass("fa fa-flag").attr("aria-hidden", "true");
+  const $retweetIcon = $("<i>").addClass("fa fa-retweet").attr("aria-hidden", "true");
+  const $heartIcon = $("<i>").addClass("fa fa-heart").attr("aria-hidden", "true");
 
   $tweetFooterIcons.append($flagIcon, " ", $retweetIcon, " ", $heartIcon);
   $tweetFooter.append($tweetFooterIcons);
 
-  $tweet.append($tweetHeader, $tweetContent, $tweetFooter);
+  return $tweetFooter;
+}
+
+ function createTweetElement(tweetObj){
+  const $tweet = $("<article>").addClass("tweet");
+  const header = appendToHeader(tweetObj);
+  const tweetContent = $("<p>" + tweetObj.content.text + "</p>");
+  const footer = appendToFooter(tweetObj);
+
+  $tweet.append(header, tweetContent, footer);
 
   $($tweet).on("mouseenter", function(){
 
     $(this).find("footer div").css("display", "inline");
     $(this).find("header").css("opacity", "1");
-  }).on("mouseleave", function(){
 
+  }).on("mouseleave", function(){
      $(this).find("footer div").css("display", "none");
      $(this).find("header").css("opacity", "0.5");
-
   });
 
   return $tweet;
  };
 
- function renderTweets (arrOfObjects){
+ function renderTweets(arrOfObjects){
   arrOfObjects.forEach(function(object){
     $("#tweets-container").append(createTweetElement(object));
   });
