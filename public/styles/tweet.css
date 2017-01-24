@@ -9,23 +9,23 @@ article p{
 }
 
 article.tweet header{
+  opacity: 0.5;
   border-radius:5px 5px 0 0;
   padding: 0.5em;
   height:70px;
   margin-top: 0;
   background-color: #eee;
+  color:#244751;
 }
 
 article.tweet h2{
   margin-top: 0px;
-  color:#667E85;
 }
 
 article.tweet h3{
   margin-top: -2.75em;
   font-size: 1em;
   float:right;
-  color: #ADADAD;
   font-weight:normal;
 }
 
