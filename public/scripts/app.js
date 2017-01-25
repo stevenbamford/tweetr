@@ -25,7 +25,11 @@ $(document).ready(function (){
     $.ajax({
       url: "/tweets",
       method: "POST",
-      data: data
+      data: data,
+      success: function(){
+        $("#tweets-container").empty();
+        loadTweets();
+      }
     });
   });
 
@@ -127,7 +131,7 @@ function appendToFooter(tweetObj){
 
  function renderTweets(arrOfObjects){
   arrOfObjects.forEach(function(object){
-    $("#tweets-container").append(createTweetElement(object));
+    $("#tweets-container").prepend(createTweetElement(object));
   });
  }
 
