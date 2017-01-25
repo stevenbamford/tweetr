@@ -9,6 +9,7 @@ article.tweet:hover{
 }
 
 article p{
+  word-wrap: break-word;
   padding: 0.5em 0.5em;
 }
 
