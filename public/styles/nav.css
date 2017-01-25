@@ -1,4 +1,4 @@
-nav{
+#nav-bar{
   z-index: 1;
   height:80px;
   width:100%;
@@ -22,4 +22,21 @@ nav{
   float: left;
   font-size: 2em;
   line-height: 80px;
+}
+
+#nav-bar button{
+  margin-top: 10px;
+  color:#00a087;
+  background-color:#E7FDFF;
+  height:60px;
+  width:120px;
+  float:right;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+#nav-bar button:hover{
+  background-color:white;
+  color:black;
+
 }
