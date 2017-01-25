@@ -7,6 +7,13 @@
 
 $(document).ready(function (){
 
+  $("#nav-bar button").on("click", function (){
+    console.log("button clicked");
+    $(".new-tweet").slideToggle("fast");
+    $(".new-tweet textarea").focus();
+  });
+
+
   $(".new-tweet form").on("submit", function(event){
 
     if($(this).closest("textarea").context["0"].textLength > 140){
