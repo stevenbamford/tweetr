@@ -29,7 +29,6 @@ $(document).ready(function (){
 
     event.preventDefault();
     $("#tweets-container").empty();
-
     $("#loadingGIF").show();
 
     $.ajax({
@@ -38,7 +37,6 @@ $(document).ready(function (){
       data: $(this).serialize(),
       }).then(function(){
         $("#loadingGIF").hide();
-        // $("#tweets-container").empty();
         loadTweets();
       });
 
