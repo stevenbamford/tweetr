@@ -28,12 +28,17 @@ $(document).ready(function (){
     }
 
     event.preventDefault();
+    $("#tweets-container").empty();
+
+    $("#loadingGIF").show();
+
     $.ajax({
       url: "/tweets",
       method: "POST",
       data: $(this).serialize(),
       }).then(function(){
-        $("#tweets-container").empty();
+        $("#loadingGIF").hide();
+        // $("#tweets-container").empty();
         loadTweets();
       });
 

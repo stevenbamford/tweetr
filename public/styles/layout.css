@@ -34,3 +34,9 @@ body {
   padding-bottom:100px;
   background-color: white;
  }
+
+
+#loadingGIF{
+  text-align: center;
+  display: none;
+}
