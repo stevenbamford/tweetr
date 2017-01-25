@@ -14,6 +14,12 @@ $(document).ready(function (){
        alert("Too many characters");
        return;
      }
+
+    if(!$(this).closest("textarea").context["0"].value){
+      event.preventDefault();
+      alert("Please enter a tweet!");
+      return;
+    }
    let data = $(this).serialize();
    event.preventDefault();
     $.ajax({
@@ -47,7 +53,7 @@ $(document).ready(function (){
 
 function calcWhenTweeted(tweetObj){
   let dateCreated = Date.now() - tweetObj["created_at"];
-  let createdAgo = Math.round(dateCreated / 1000);
+  let createdAgo = dateCreated / 1000 ;
 
   if(createdAgo > 31557600){
     createdAgo = Math.floor(createdAgo/ 3155760);
@@ -64,7 +70,8 @@ function calcWhenTweeted(tweetObj){
   if(createdAgo > 60){
     createdAgo = Math.floor(createdAgo/ 60);
     return createdAgo + " minutes ago";
-  }else{
+  }
+  if(createdAgo < 60){
     createdAgo = Math.floor(createdAgo);
     return createdAgo + " seconds ago";
   }
