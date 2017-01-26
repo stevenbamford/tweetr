@@ -4,27 +4,35 @@ $(document).ready(function (){
     let dateCreated = Date.now() - tweetObj["created_at"];
     let createdAgo = dateCreated / 1000 ;
 
-    if(createdAgo > 31557600){
-      createdAgo = Math.floor(createdAgo / 3155760);
-      return createdAgo + " years ago";
-    }
-    if(createdAgo > 86400){
-      createdAgo = Math.floor(createdAgo / 86400);
-      return createdAgo + " days ago";
-    }
-    if(createdAgo > 3600){
-      createdAgo = Math.floor(createdAgo / 3600);
-      return createdAgo + " hours ago";
-    }
-    if(createdAgo > 60){
-      createdAgo = Math.floor(createdAgo / 60);
-      return createdAgo + " minutes ago";
-    }
-    if(createdAgo < 60){
-      createdAgo = Math.floor(createdAgo);
-      return createdAgo + " seconds ago";
-    }
+  switch (true){
+
+    case (createdAgo > 31557600):
+      createdAgo = Math.floor(createdAgo / 3155760) + " years ago" ;
+      break;
+
+    case (createdAgo > 86400):
+      createdAgo = Math.floor(createdAgo / 86400) + " days ago";
+      break;
+
+    case (createdAgo > 3600):
+      createdAgo = Math.floor(createdAgo / 3600) + " hours ago";
+      break;
+
+    case (createdAgo > 60):
+      createdAgo = Math.floor(createdAgo / 60) + " minutes ago";
+      break;
+
+    case (createdAgo < 60):
+      createdAgo = Math.floor(createdAgo) + " seconds ago";
+      break;
   }
+  String(createdAgo);
+
+  if(createdAgo.split(" ")[0] === "1"){
+    createdAgo = createdAgo.replace("s", "");
+  }
+  return createdAgo
+}
 
 
   function appendToHeader(tweetObj){
@@ -133,6 +141,8 @@ $(document).ready(function (){
     $(this).find("footer div").css("display", "none");
     $(this).find("header").css("opacity", "0.5");
   });
+
+
 
 });
 
