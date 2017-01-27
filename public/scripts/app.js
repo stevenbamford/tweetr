@@ -104,19 +104,18 @@ $(document).ready(function (){
 
   $(".new-tweet form").on("submit", function(event){
 
+    event.preventDefault();
+
     if($(this).find("textarea").val().length > 140){
-      event.preventDefault();
       alert("Too many characters");
       return;
     }
 
     if(!$(this).find("textarea").val()){
-      event.preventDefault();
       alert("Please enter a tweet!");
       return;
     }
 
-    event.preventDefault();
     $(this).find(".counter").text(140);
     $("#tweets-container").empty();
     $("#loadingGIF").show();
