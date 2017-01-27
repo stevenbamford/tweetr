@@ -1,6 +1,6 @@
 $(document).ready(function (){
 
-  $(".new-tweet textarea").on("keyup", function(){
+  $(".new-tweet textarea").on("input", function(){
     let numChars = $(this).val().length;
     let charsRemaining = 140 - numChars;
     $(this).closest("form").find(".counter").text(charsRemaining);
