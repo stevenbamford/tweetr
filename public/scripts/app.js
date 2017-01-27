@@ -133,14 +133,5 @@ $(document).ready(function (){
     $(".new-tweet textarea").val("");
   });
 
-  $("article.tweet").on("mouseenter", function(){
-    $(this).find("footer div").css("display", "inline");
-    $(this).find("header").css("opacity", "1");
-
-  }).on("mouseleave", function(){
-    $(this).find("footer div").css("display", "none");
-    $(this).find("header").css("opacity", "0.5");
-  });
-
 });
 
