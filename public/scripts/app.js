@@ -117,6 +117,7 @@ $(document).ready(function (){
     }
 
     event.preventDefault();
+    $(this).find(".counter").text(140);
     $("#tweets-container").empty();
     $("#loadingGIF").show();
 
