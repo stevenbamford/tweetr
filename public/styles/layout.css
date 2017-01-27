@@ -10,38 +10,34 @@ html {
   box-sizing: inherit;
 }
 
-/*
- * Global layout stuff
- */
-
 body {
-  font-family: roboto, sans-serif;
-  margin: -60px auto 0 auto;
-  color: #244751;
   background-color: #eee;
+  color: #244751;
+  font-family: roboto, sans-serif;
   font-size: 1em;
+  margin: -60px auto 0 auto
 }
 
  main {
-  width:450px;
+  background-color: white;
   margin: 140px auto 0 auto;
   padding-top:75px;
   padding-bottom:75px;
-  background-color: white;
+  width:450px;
  }
 
 
 #loadingGIF{
-  text-align: center;
   display: none;
+  text-align: center;
 }
 
 @media screen and (max-width: 450px){
 
   #nav-bar button{
-    width:40px;
     height:40px;
     margin-top:20px;
+    width:40px;
   }
 
   #nav-bar button span{

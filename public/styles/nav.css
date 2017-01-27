@@ -1,20 +1,13 @@
 #nav-bar{
-  z-index: 1;
+  background-color: #00a087;
+  color: #e8fdff;
   height:80px;
-  width:100%;
+  padding: 0 2em 0 2em;
   position:fixed;
   top:0;
   left:0;
-  background-color: #00a087;
-  color: #e8fdff;
-  padding: 0 2em 0 2em;
-  }
-
-#nav-bar .logo {
-  float:left;
-  width:80px;
-  height:80px;
-  margin-right:10px;
+  width:100%;
+  z-index: 1;
 }
 
 #nav-bar .header {
@@ -24,15 +17,23 @@
   line-height: 80px;
 }
 
+#nav-bar .logo {
+  float:left;
+  height:80px;
+  margin-right:10px;
+  width:80px;
+}
+
+
 #nav-bar button{
-  margin-top: 10px;
-  color:#00a087;
   background-color:#E7FDFF;
-  height:60px;
-  width:120px;
-  float:right;
   border: 1px solid black;
   border-radius: 3px;
+  color:#00a087;
+  float:right;
+  height:60px;
+  margin-top: 10px;
+  width:120px;
 }
 
 #nav-bar button:hover{
