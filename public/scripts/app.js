@@ -34,7 +34,6 @@ $(document).ready(function (){
   return createdAgo
 }
 
-
   function appendToHeader(tweetObj){
     const $tweetHeader = $("<header>");
     const imgSrc = tweetObj.user.avatars.small;
@@ -141,8 +140,6 @@ $(document).ready(function (){
     $(this).find("footer div").css("display", "none");
     $(this).find("header").css("opacity", "0.5");
   });
-
-
 
 });
 

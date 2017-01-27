@@ -29,8 +29,8 @@ body {
  main {
   width:450px;
   margin: 140px auto 0 auto;
-  padding-top:100px;
-  padding-bottom:100px;
+  padding-top:75px;
+  padding-bottom:75px;
   background-color: white;
  }
 
@@ -38,4 +38,27 @@ body {
 #loadingGIF{
   text-align: center;
   display: none;
+}
+
+@media screen and (max-width: 450px){
+
+  #nav-bar button{
+    width:40px;
+    height:40px;
+    margin-top:20px;
+  }
+
+  #nav-bar button span{
+    display: none;
+  }
+
+  main{
+    min-width: 320px;
+    width:100%;
+  }
+
+  article.tweet h3{
+    float: none;
+    margin-top:-20px;
+  }
 }
